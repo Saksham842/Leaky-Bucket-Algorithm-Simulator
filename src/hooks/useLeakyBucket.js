@@ -1,75 +1,61 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
-/**
- * Custom hook to manage the Leaky Bucket Simulation State.
- */
+// The main logic of the Leaky Bucket algorithm.
+// Uses refs for the fast simulation loop (60fps) and state for the UI.
 export const useLeakyBucket = (initialCapacity = 100, initialLeakRate = 30) => {
   const [capacity, setCapacity] = useState(initialCapacity);
-  const [leakRate, setLeakRate] = useState(initialLeakRate);
-  const [queue, setQueue] = useState(0);
-  
-  // Real-time stats
-  const [stats, setStats] = useState({
-    processed: 0,
-    dropped: 0,
-    incoming: 0
-  });
+  const [leakRate, setLeakRate]  = useState(initialLeakRate);
+  const [queue, setQueue]        = useState(0);
+  const [stats, setStats]        = useState({ processed: 0, dropped: 0 });
 
-  // Using refs for high-frequency simulation loop (60fps)
-  const queueRef = useRef(0);
-  const statsRef = useRef({ processed: 0, dropped: 0, incoming: 0 });
-  const lastUpdateRef = useRef(performance.now());
+  // Refs hold the true simulation values between frames (no re-renders)
+  const queueRef    = useRef(0);
+  const statsRef    = useRef({ processed: 0, dropped: 0 });
+  const lastTimeRef = useRef(performance.now());
 
+  // Try to add packets to the bucket. Drops any that don't fit.
   const addPackets = useCallback((amount) => {
-    statsRef.current.incoming += amount;
-    const available = capacity - queueRef.current;
-    const added = Math.min(amount, Math.max(0, available));
+    const space   = capacity - queueRef.current;
+    const added   = Math.min(amount, Math.max(0, space));
     const dropped = amount - added;
 
-    queueRef.current += added;
+    queueRef.current        += added;
     statsRef.current.dropped += dropped;
 
     return { added, dropped };
   }, [capacity]);
 
+  // Called every animation frame to drain the bucket at the leak rate.
   const update = useCallback((now) => {
-    const delta = (now - lastUpdateRef.current) / 1000;
-    lastUpdateRef.current = now;
+    const delta = (now - lastTimeRef.current) / 1000; // seconds since last frame
+    lastTimeRef.current = now;
 
     if (queueRef.current > 0) {
-      const leak = leakRate * delta;
-      const actualLeak = Math.min(queueRef.current, leak);
-      queueRef.current -= actualLeak;
-      statsRef.current.processed += actualLeak;
+      const drained = Math.min(queueRef.current, leakRate * delta);
+      queueRef.current          -= drained;
+      statsRef.current.processed += drained;
     }
 
-    // Periodically update React state from refs (throttled for UI performance)
-    // You could also do this every frame if needed, but refs are better for 3D synchronization.
+    // Push updated values to the UI
     setQueue(queueRef.current);
     setStats({
       processed: Math.floor(statsRef.current.processed),
-      dropped: Math.floor(statsRef.current.dropped),
-      incoming: Math.floor(statsRef.current.incoming)
+      dropped:   Math.floor(statsRef.current.dropped),
     });
   }, [leakRate]);
 
+  // Wipe everything back to zero
   const reset = useCallback(() => {
-    queueRef.current = 0;
-    statsRef.current = { processed: 0, dropped: 0, incoming: 0 };
+    queueRef.current  = 0;
+    statsRef.current  = { processed: 0, dropped: 0 };
     setQueue(0);
-    setStats({ processed: 0, dropped: 0, incoming: 0 });
+    setStats({ processed: 0, dropped: 0 });
   }, []);
 
   return {
-    queue,
-    capacity,
-    leakRate,
-    stats,
-    setCapacity,
-    setLeakRate,
-    addPackets,
-    update,
-    reset,
-    queueRef // Exposed for React Three Fiber useFrame
+    queue, capacity, leakRate, stats,
+    setCapacity, setLeakRate,
+    addPackets, update, reset,
+    queueRef, // needed by the 3D scene's useFrame
   };
 };
