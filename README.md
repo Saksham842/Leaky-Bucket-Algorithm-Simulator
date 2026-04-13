@@ -17,7 +17,7 @@ A high-performance, visually immersive simulator for the **Leaky Bucket algorith
 - **Session Spline**: Lightweight, high-resolution session tracking from start to stop using **Recharts**.
 - **Intelligence Metrics**: Real-time calculation of **Estimated Latency** (Queuing Delay) and Peak Load.
 - **Feedback**: A "Bucket Mood" indicator that provides descriptive, personality-driven status updates.
-- ** Performance First**: State management optimized with `useRef` for 60FPS simulation loops.
+- **Performance First**: State management optimized with `useRef` for 60FPS simulation loops.
 
 ---
 
