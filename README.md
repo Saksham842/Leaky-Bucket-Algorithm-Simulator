@@ -1,23 +1,23 @@
-# 🚰 LeakyBucket v2 · Realtime Network Traffic Simulator
+# LeakyBucket v2 · Realtime Network Traffic Simulator
 
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.dot-js&logoColor=white)](https://threejs.org/)
 [![Recharts](https://img.shields.io/badge/Recharts-22D3EE?style=for-the-badge&logo=recharts&logoColor=white)](https://recharts.org/)
 
-A high-performance, visually immersive simulator for the **Leaky Bucket algorithm**, featuring a premium MacBook-inspired analysis suite and real-time 3D packet physics.
+A high-performance, visually immersive simulator for the **Leaky Bucket algorithm**, featuring a premium analysis suite and real-time 3D packet physics.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **🎮 Dynamic Controls**: Real-time manipulation of Inflow Rate, Leak Rate, and Buffer Capacity.
-- **🧊 3D Visualization**: High-fidelity 3D packet flow rendering powered by **React Three Fiber**.
-- **🍏 MacBook-Style Analysis**: A premium dashboard featuring glassmorphism widgets for deep simulation diagnostics.
-- **📊 Session Spline**: Lightweight, high-resolution session tracking from start to stop using **Recharts**.
-- **🧠 Intelligence Metrics**: Real-time calculation of **Estimated Latency** (Queuing Delay) and Peak Load.
-- **🤖 Humanised Feedback**: A "Bucket Mood" indicator that provides descriptive, personality-driven status updates.
-- **⚡ Performance First**: State management optimized with `useRef` for 60FPS simulation loops.
+- ** Dynamic Controls**: Real-time manipulation of Inflow Rate, Leak Rate, and Buffer Capacity.
+- ** 3D Visualization**: High-fidelity 3D packet flow rendering powered by **React Three Fiber**.
+- ** Real-time Analysis**: A premium dashboard featuring glassmorphism widgets for deep simulation diagnostics.
+- ** Session Spline**: Lightweight, high-resolution session tracking from start to stop using **Recharts**.
+- ** Intelligence Metrics**: Real-time calculation of **Estimated Latency** (Queuing Delay) and Peak Load.
+- ** Feedback**: A "Bucket Mood" indicator that provides descriptive, personality-driven status updates.
+- ** Performance First**: State management optimized with `useRef` for 60FPS simulation loops.
 
 ---
 
@@ -27,12 +27,11 @@ A high-performance, visually immersive simulator for the **Leaky Bucket algorith
 - **3D Engine**: [Three.js](https://threejs.org/) via [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
 - **Data Viz**: [Recharts](https://recharts.org/) (for Analysis suite)
 - **Animations**: [GSAP](https://greensock.com/gsap/) & [Framer Motion](https://www.framer.com/motion/)
-- **Styling**: Vanilla CSS (Premium Glassmorphism)
-- **Icons**: Apple-style SF Pro symbols
+- **Styling**: Vanilla CSS 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -59,7 +58,7 @@ A high-performance, visually immersive simulator for the **Leaky Bucket algorith
 
 ---
 
-## 📖 How it Works
+## How it Works
 
 The **Leaky Bucket** algorithm acts as a buffer. Regardless of how bursty or irregular the incoming traffic is, it exits the bucket at a constant, steady rate.
 
@@ -70,7 +69,7 @@ The **Leaky Bucket** algorithm acts as a buffer. Regardless of how bursty or irr
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 ├── src/
@@ -88,7 +87,7 @@ The **Leaky Bucket** algorithm acts as a buffer. Regardless of how bursty or irr
 
 ---
 
-## 📐 Analysis Suite Details
+## Analysis Suite Details
 
 ### Estimated Latency
 Calculates the theoretical time a packet spends waiting in the buffer using the formula: `Latency = Queue Size / Leak Rate`. This provides critical insight into the "lag" introduced by traffic shaping.
@@ -98,21 +97,6 @@ A lightweight Recharts implementation that captures the full history of the prop
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Open a Pull Request
-
----
-
-## 📝 License
-
-Distributed under the MIT License.
-
----
-
 <p align="center">
-  Developed for educational purposes in Computer Networking.
+  Developed for Computer Networking project by Saksham Hans and group.
 </p>
