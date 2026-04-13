@@ -1,4 +1,4 @@
-# LeakyBucket v2 · Realtime Network Traffic Simulator
+# LeakyBucket · Realtime Network Traffic Simulator
 
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -11,12 +11,12 @@ A high-performance, visually immersive simulator for the **Leaky Bucket algorith
 
 ## Key Features
 
-- ** Dynamic Controls**: Real-time manipulation of Inflow Rate, Leak Rate, and Buffer Capacity.
-- ** 3D Visualization**: High-fidelity 3D packet flow rendering powered by **React Three Fiber**.
-- ** Real-time Analysis**: A premium dashboard featuring glassmorphism widgets for deep simulation diagnostics.
-- ** Session Spline**: Lightweight, high-resolution session tracking from start to stop using **Recharts**.
-- ** Intelligence Metrics**: Real-time calculation of **Estimated Latency** (Queuing Delay) and Peak Load.
-- ** Feedback**: A "Bucket Mood" indicator that provides descriptive, personality-driven status updates.
+- **Dynamic Controls**: Real-time manipulation of Inflow Rate, Leak Rate, and Buffer Capacity.
+- **3D Visualization**: High-fidelity 3D packet flow rendering powered by **React Three Fiber**.
+- **Real-time Analysis**: A premium dashboard featuring glassmorphism widgets for deep simulation diagnostics.
+- **Session Spline**: Lightweight, high-resolution session tracking from start to stop using **Recharts**.
+- **Intelligence Metrics**: Real-time calculation of **Estimated Latency** (Queuing Delay) and Peak Load.
+- **Feedback**: A "Bucket Mood" indicator that provides descriptive, personality-driven status updates.
 - ** Performance First**: State management optimized with `useRef` for 60FPS simulation loops.
 
 ---
